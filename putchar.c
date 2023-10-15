@@ -9,5 +9,14 @@
 
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	char buffer[LOCAL_BUFFER];
+	int index = 0;
+
+	if (buffer_index == LOCAL_BUFFER)
+	{
+		write(1, buffer, LOCAL_BUFFER);
+		index = 0;
+	}
+	buffer[index++] = c;
+	return (1);
 }

@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+#define LOCAL_BUFFER 1024;
+
 /**
  * struct formatter - Holds a format string and a corresponding function.
  * @fmt: The format string.
