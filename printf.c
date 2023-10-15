@@ -30,6 +30,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	printed_chars = handle_specifiers(format, func_list, args);
+	_putchar(FLUSH_BUFFER);
 	va_end(args);
 
 	return (printed_chars);

@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include "main.h"
 
 /**
  * _putchar - writes the character c to stdout
@@ -9,14 +10,15 @@
 
 int _putchar(char c)
 {
-	char buffer[LOCAL_BUFFER];
-	int index = 0;
+	static char buffer[LOCAL_BUFFER];
+	static int index;
 
-	if (buffer_index == LOCAL_BUFFER)
+	if (c == FLUSH_BUFFER || index >= LOCAL_BUFFER)
 	{
-		write(1, buffer, LOCAL_BUFFER);
+		write(1, buffer, index);
 		index = 0;
 	}
-	buffer[index++] = c;
+	if (c != FLUSH_BUFFER)
+		buffer[index++] = c;
 	return (1);
 }
