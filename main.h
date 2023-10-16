@@ -22,6 +22,8 @@ struct formatter
 
 typedef struct formatter fmt_list;
 
+char *_strdup(char *str);
+char *_rot13(char *str);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int handle_specifiers(const char *format, fmt_list func_list[], va_list args);
@@ -38,5 +40,7 @@ int print_hex_upper(va_list args);
 int print_custom_string(va_list args);
 int print_address(va_list args);
 int print_reverse(va_list args);
+int print_rot13(va_list args);
+
 
 #endif
