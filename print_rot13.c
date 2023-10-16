@@ -23,7 +23,6 @@ int print_rot13(va_list args)
 	}
 
 	rot = _rot13(copy);
-	
 	for (i = 0; rot[i] != '\0'; i++)
 		chars_printed += _putchar(rot[i]);
 	free(copy);
