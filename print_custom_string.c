@@ -12,13 +12,13 @@
 int print_custom_string(va_list args)
 {
 	char *str;
-	int chars = 0;
+	int i, chars = 0;
 
 	str = va_arg(args, char*);
 	if (str == NULL)
 		return (_printf("(null)"));
 
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] < 32 || str[i] >= 127)
 		{
