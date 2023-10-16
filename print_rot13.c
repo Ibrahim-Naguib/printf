@@ -1,31 +1,39 @@
 #include "main.h"
+
 /**
  * print_rot13 - Prints a rot13'ed string.
  * @args: va_list argument containing the string to be transformed and printed.
  *
  * Return: The number of characters printed.
  */
+
 int print_rot13(va_list args)
 {
-	char *str = va_arg(args, char *);
-	int chars_printed = 0, i;
-	char *copy = _strdup(str);
-	char *rot;
-	char *nill = ("nil");
+	int i, j, chars_printed = 0;
+	int replaced = 0;
+	char *str = va_arg(args, char*);
+	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char alpha2[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
 	if (str == NULL)
+		str = "(null)";
+	for (i = 0; str[i]; i++)
 	{
-		for (i = 0; nill[i] != '\0'; i++)
+		replaced = 0;
+		for (j = 0; alpha[j] && !replaced; j++)
 		{
-			chars_printed += _putchar(nill[i]);
+			if (str[i] == alpha[j])
+			{
+				_putchar(alpha2[j]);
+				chars_printed++;
+				replaced = 1;
+			}
 		}
-		return (chars_printed);
+		if (!replaced)
+		{
+			_putchar(str[i]);
+			chars_printed++;
+		}
 	}
-
-	rot = _rot13(copy);
-	for (i = 0; rot[i] != '\0'; i++)
-		chars_printed += _putchar(rot[i]);
-	free(copy);
-
 	return (chars_printed);
 }
