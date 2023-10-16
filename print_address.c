@@ -38,10 +38,15 @@ int print_address(va_list args)
 	int temp_index = 0;
 	int digit, i;
 	unsigned long int value;
+	char *nill = "(nil)";
 
 	if (ptr == NULL)
 	{
-		return (_printf("(null)"));
+		for (i = 0; nill[i] != '\0'; i++)
+		{
+			_putchar(nill[i]);
+		}
+		return (i);
 	}
 
 
